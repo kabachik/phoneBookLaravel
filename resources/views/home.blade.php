@@ -16,132 +16,67 @@
 {{--        </form>--}}
 {{--    </div>--}}
 
-    <div class="table-responsive">
-        <table class="table table-striped table-sm">
-            <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Header</th>
-                <th scope="col">Header</th>
-                <th scope="col">Header</th>
-                <th scope="col">Header</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>1,001</td>
-                <td>random</td>
-                <td>data</td>
-                <td>placeholder</td>
-                <td>text</td>
-            </tr>
-            <tr>
-                <td>1,002</td>
-                <td>placeholder</td>
-                <td>irrelevant</td>
-                <td>visual</td>
-                <td>layout</td>
-            </tr>
-            <tr>
-                <td>1,003</td>
-                <td>data</td>
-                <td>rich</td>
-                <td>dashboard</td>
-                <td>tabular</td>
-            </tr>
-            <tr>
-                <td>1,003</td>
-                <td>information</td>
-                <td>placeholder</td>
-                <td>illustrative</td>
-                <td>data</td>
-            </tr>
-            <tr>
-                <td>1,004</td>
-                <td>text</td>
-                <td>random</td>
-                <td>layout</td>
-                <td>dashboard</td>
-            </tr>
-            <tr>
-                <td>1,005</td>
-                <td>dashboard</td>
-                <td>irrelevant</td>
-                <td>text</td>
-                <td>placeholder</td>
-            </tr>
-            <tr>
-                <td>1,006</td>
-                <td>dashboard</td>
-                <td>illustrative</td>
-                <td>rich</td>
-                <td>data</td>
-            </tr>
-            <tr>
-                <td>1,007</td>
-                <td>placeholder</td>
-                <td>tabular</td>
-                <td>information</td>
-                <td>irrelevant</td>
-            </tr>
-            <tr>
-                <td>1,008</td>
-                <td>random</td>
-                <td>data</td>
-                <td>placeholder</td>
-                <td>text</td>
-            </tr>
-            <tr>
-                <td>1,009</td>
-                <td>placeholder</td>
-                <td>irrelevant</td>
-                <td>visual</td>
-                <td>layout</td>
-            </tr>
-            <tr>
-                <td>1,010</td>
-                <td>data</td>
-                <td>rich</td>
-                <td>dashboard</td>
-                <td>tabular</td>
-            </tr>
-            <tr>
-                <td>1,011</td>
-                <td>information</td>
-                <td>placeholder</td>
-                <td>illustrative</td>
-                <td>data</td>
-            </tr>
-            <tr>
-                <td>1,012</td>
-                <td>text</td>
-                <td>placeholder</td>
-                <td>layout</td>
-                <td>dashboard</td>
-            </tr>
-            <tr>
-                <td>1,013</td>
-                <td>dashboard</td>
-                <td>irrelevant</td>
-                <td>text</td>
-                <td>visual</td>
-            </tr>
-            <tr>
-                <td>1,014</td>
-                <td>dashboard</td>
-                <td>illustrative</td>
-                <td>rich</td>
-                <td>data</td>
-            </tr>
-            <tr>
-                <td>1,015</td>
-                <td>random</td>
-                <td>tabular</td>
-                <td>information</td>
-                <td>text</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
+
+<div class="table-responsive">
+    <table class="table table-striped table-sm">
+        <thead>
+        <tr>
+{{--            <th scope="col"><input type="checkbox" id="chkCheckAll"></th>--}}
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Surname</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Email</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+    @foreach($contacts as $el)
+        <tr id="sid{{$el->id}}">
+            <td>{{$el->id}}</td>
+            <td>{{$el->name}}</td>
+            <td>{{$el->surname}}</td>
+            <td>{{$el->phone}}</td>
+            <td>{{$el->email}}</td>
+            <td>{{$el->gender}}</td>
+            <td>
+{{--                <form method="POST" action="/edit/{{$el->id}}">--}}
+{{--                    {{ csrf_field() }}--}}
+{{--                    {{ method_field('EDIT') }}--}}
+
+{{--                    <div class="form-group">--}}
+{{--                        <input type="submit" class="btn btn-secondary edit-user" value="Edit">--}}
+{{--                    </div>--}}
+{{--                </form>--}}
+{{--                <form  method="POST" action="/delete/{{$el->id}}">--}}
+{{--                    {{ csrf_field() }}--}}
+{{--                    {{ method_field('DELETE') }}--}}
+
+{{--                    <div class="form-group">--}}
+{{--                        <input type="submit" class="btn btn-dark delete-user" value="Delete">--}}
+{{--                    </div>--}}
+{{--                </form>--}}
+                <div class="btn-group">
+                    <form method="POST" action="/edit/{{$el->id}}">
+                        <div class="form-group">
+                            <a class="btn btn-secondary edit-user" data-bs-toggle="modal" data-bs-target="#editModal">Edit</a>
+                        </div>
+                    </form>
+                    <form  method="POST" action="/delete/{{$el->id}}">
+                        {{ csrf_field() }}
+                        {{ method_field('DELETE') }}
+
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-dark delete-user" value="Delete">
+                        </div>
+                    </form>
+                </div>
+            </td>
+        </tr>
+    @endforeach
+        </tbody>
+    </table>
+</div>
 
 @endsection

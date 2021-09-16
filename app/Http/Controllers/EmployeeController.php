@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\contact_models;
 use Illuminate\Http\Request;
-use App\Models\Contact;
 
 class EmployeeController extends Controller
 {
     public function home(){
-        return view('home');
+        $contacts = new contact_models();
+        return view('home', ['contacts' => $contacts->all()]);
     }
 
     public function send(Request $request){
@@ -31,4 +31,13 @@ class EmployeeController extends Controller
 
         return redirect()->route('/');
     }
+
+
+    public function delete($id){
+            $contact = contact_models::find($id);
+            $contact->delete();
+            return redirect()->route('/');
+    }
+
+
 }
