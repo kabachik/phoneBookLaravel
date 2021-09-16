@@ -59,8 +59,48 @@
 {{--                </form>--}}
                 <div class="btn-group">
                         <div class="form-group">
-                            <a  class="btn btn-secondary edit-user" data-bs-toggle="modal" data-bs-target="#editModal">Edit</a>
+                            <a class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#editModal{{$el->id}}">Edit</a>
                         </div>
+                    <form action="/edit/{{$el->id}}" method="POST">
+                        @csrf
+                        <div class="modal fade" id="editModal{{$el->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Edit contact</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-floating mb-3">
+                                            <input type="text" class="form-control" name="name" placeholder="Name" value="{{$el->name}}">
+                                            <label for="Name">Name</label>
+                                        </div>
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" name="surname" placeholder="Surname" value="{{$el->surname}}">
+                                            <label for="Surname">Surname</label>
+                                        </div><br>
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" name="phone" placeholder="Phone number" value="{{$el->phone}}">
+                                            <label for="Phone">Phone number</label>
+                                        </div><br>
+                                        <div class="form-floating">
+                                            <input type="email" class="form-control" name="email" placeholder="Email" value="{{$el->email}}">
+                                            <label for="Email">Email</label>
+                                        </div><br>
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" name="gender" placeholder="Male/Female" value="{{$el->gender}}">
+                                            <label for="Gender">Gender</label>
+                                        </div>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Dismiss</button>
+                                        <button type="submit" class="btn btn-primary">Save</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                     <form  method="POST" action="/delete/{{$el->id}}">
                         @csrf
                         @method('DELETE')

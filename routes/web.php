@@ -15,14 +15,10 @@ use App\Http\Controllers\EmployeeController;
 
 Route::get('/', 'EmployeeController@home')->name('/');
 
-Route::get('/add', 'EmployeeController@add');
-
 Route::post('/send', 'EmployeeController@send');
 
 Route::delete('/delete/{id}', 'EmployeeController@delete');
 
 Route::post('/edit/{id}', 'EmployeeController@edit');
-
-//Route::get('/delete/{id}', 'EmployeeController@delete');
 
 
