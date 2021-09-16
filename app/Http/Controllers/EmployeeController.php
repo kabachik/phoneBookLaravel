@@ -32,12 +32,25 @@ class EmployeeController extends Controller
         return redirect()->route('/');
     }
 
+    public function edit($id, Request $request){
+        $contact = contact_models::find($id);
+        $contact->name = $request->input('name');
+        $contact->surname = $request->input('surname');
+        $contact->phone = $request->input('phone');
+        $contact->email = $request->input('email');
+        $contact->gender = $request->input('gender');
+
+        $contact->save();
+
+        return redirect()->route('/');
+    }
 
     public function delete($id){
             $contact = contact_models::find($id);
             $contact->delete();
             return redirect()->route('/');
     }
+
 
 
 }

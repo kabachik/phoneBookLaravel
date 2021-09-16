@@ -95,7 +95,7 @@
     </div>
 </form>
 
-<form action="/edit" method="POST">
+<form action="/edit/{{$el->id}}" method="POST">
     @csrf
     <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -106,23 +106,23 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" name="name" placeholder="Name">
+                        <input type="text" class="form-control" name="name" placeholder="Name" value="{{$el->name}}">
                         <label for="Name">Name</label>
                     </div>
                     <div class="form-floating">
-                        <input type="text" class="form-control" name="surname" placeholder="Surname">
+                        <input type="text" class="form-control" name="surname" placeholder="Surname" value="{{$el->surname}}">
                         <label for="Surname">Surname</label>
                     </div><br>
                     <div class="form-floating">
-                        <input type="text" class="form-control" name="phone" placeholder="Phone number">
+                        <input type="text" class="form-control" name="phone" placeholder="Phone number" value="{{$el->phone}}">
                         <label for="Phone">Phone number</label>
                     </div><br>
                     <div class="form-floating">
-                        <input type="email" class="form-control" name="email" placeholder="Email">
+                        <input type="email" class="form-control" name="email" placeholder="Email" value="{{$el->email}}">
                         <label for="Email">Email</label>
                     </div><br>
                     <div class="form-floating">
-                        <input type="text" class="form-control" name="gender" placeholder="Male/Female">
+                        <input type="text" class="form-control" name="gender" placeholder="Male/Female" value="{{$el->gender}}">
                         <label for="Gender">Gender</label>
                     </div>
 

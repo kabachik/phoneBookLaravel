@@ -58,14 +58,12 @@
 {{--                    </div>--}}
 {{--                </form>--}}
                 <div class="btn-group">
-                    <form method="POST" action="/edit/{{$el->id}}">
                         <div class="form-group">
-                            <a class="btn btn-secondary edit-user" data-bs-toggle="modal" data-bs-target="#editModal">Edit</a>
+                            <a  class="btn btn-secondary edit-user" data-bs-toggle="modal" data-bs-target="#editModal">Edit</a>
                         </div>
-                    </form>
                     <form  method="POST" action="/delete/{{$el->id}}">
-                        {{ csrf_field() }}
-                        {{ method_field('DELETE') }}
+                        @csrf
+                        @method('DELETE')
 
                         <div class="form-group">
                             <input type="submit" class="btn btn-dark delete-user" value="Delete">
