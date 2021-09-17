@@ -1,20 +1,14 @@
 @extends('layout')
 @section('content')
 
+    @if (count($errors) > 0)
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            New record has not been added because of
+            {!! implode('', $errors->all('<div>:message</div>')) !!}
+            <span data-dismiss="alert" aria-label="Close" aria-hidden="true" data-dismiss="alert" aria-label="Close">X</span>
+        </div>
+    @endif
 
-
-{{--    <a href="#form" class="popup">Add</a>--}}
-
-{{--    <div class="d-none">--}}
-{{--        <form id="form">--}}
-{{--            <input type="text" name="name" placeholder="Name">--}}
-{{--            <input type="text" name="surname" placeholder="Surname">--}}
-{{--            <input type="text" name="gender" placeholder="Male/Female">--}}
-{{--            <input type="text" name="phone" placeholder="Phone number">--}}
-{{--            <input type="text" name="email" placeholder="Email">--}}
-{{--            <button>Add</button>--}}
-{{--        </form>--}}
-{{--    </div>--}}
 
 
 <div class="table-responsive">
@@ -72,30 +66,31 @@
                                     </div>
                                     <div class="modal-body">
                                         <div class="form-floating mb-3">
-                                            <input type="text" class="form-control" name="name" placeholder="Name" value="{{$el->name}}">
+                                            <input type="text" id="edit-name" class="form-control" name="name" placeholder="Name" value="{{$el->name}}">
+                                            <small id="edit-warn" class="d-none text-danger">Field is empty</small>
                                             <label for="Name">Name</label>
                                         </div>
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" name="surname" placeholder="Surname" value="{{$el->surname}}">
+                                            <input type="text" id="edit-surname" class="form-control" name="surname" placeholder="Surname" value="{{$el->surname}}">
                                             <label for="Surname">Surname</label>
                                         </div><br>
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" name="phone" placeholder="Phone number" value="{{$el->phone}}">
+                                            <input type="text" id="edit-phone" class="form-control" name="phone" placeholder="Phone number" value="{{$el->phone}}">
                                             <label for="Phone">Phone number</label>
                                         </div><br>
                                         <div class="form-floating">
-                                            <input type="email" class="form-control" name="email" placeholder="Email" value="{{$el->email}}">
+                                            <input type="email" id="edit-email" class="form-control" name="email" placeholder="Email" value="{{$el->email}}">
                                             <label for="Email">Email</label>
                                         </div><br>
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" name="gender" placeholder="Male/Female" value="{{$el->gender}}">
+                                            <input type="text" id="edit-gender" class="form-control" name="gender" placeholder="Male/Female" value="{{$el->gender}}">
                                             <label for="Gender">Gender</label>
                                         </div>
 
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Dismiss</button>
-                                        <button type="submit" class="btn btn-primary">Save</button>
+                                        <button type="submit" id="edit-form-submit" class="btn btn-primary">Save</button>
                                     </div>
                                 </div>
                             </div>
@@ -116,5 +111,5 @@
         </tbody>
     </table>
 </div>
-
+    {{$contacts->links()}}
 @endsection

@@ -13,7 +13,9 @@ use App\Http\Controllers\EmployeeController;
 |
 */
 
-Route::get('/', 'EmployeeController@home')->name('/');
+Route::get('/', 'EmployeeController@home')->name('home');
+
+Route::get('/search', 'EmployeeController@search')->name('search');
 
 Route::post('/send', 'EmployeeController@send');
 

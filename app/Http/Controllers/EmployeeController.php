@@ -8,8 +8,9 @@ use Illuminate\Http\Request;
 class EmployeeController extends Controller
 {
     public function home(){
-        $contacts = new contact_models();
-        return view('home', ['contacts' => $contacts->all()]);
+//        $contacts = contact_models::all();
+        $contacts = contact_models::orderBy('name')->simplePaginate(10);
+        return view('home', compact('contacts'));
     }
 
     public function send(Request $request){
@@ -29,7 +30,7 @@ class EmployeeController extends Controller
 
         $contact->save();
 
-        return redirect()->route('/');
+        return redirect()->route('home');
     }
 
     public function edit($id, Request $request){
@@ -42,15 +43,28 @@ class EmployeeController extends Controller
 
         $contact->save();
 
-        return redirect()->route('/');
+        return redirect()->route('home');
     }
 
     public function delete($id){
             $contact = contact_models::find($id);
             $contact->delete();
-            return redirect()->route('/');
+            return redirect()->route('home');
     }
 
+    public function search(Request $request) {
+        $query = $request->s;
 
+        if(!$query){
+            return redirect()->route('home');
+        }
+
+        $contacts = contact_models::where('name', 'LIKE', "%{$query}%")
+            ->orWhere('surname', 'LIKE', "%{$query}%")
+            ->orWhere('phone', 'LIKE', "%{$query}%")
+            ->simplePaginate(10);
+
+        return view('home', compact('contacts'));
+    }
 
 }
