@@ -17,8 +17,8 @@
         <tr>
 {{--            <th scope="col"><input type="checkbox" id="chkCheckAll"></th>--}}
             <th scope="col">ID</th>
-            <th scope="col">Name</th>
-            <th scope="col">Surname</th>
+            <th scope="col"><a href="{{route('sortBy','name')}}">Name</a></th>
+            <th scope="col"><a href="{{route('sortBy','surname')}}">Surame</a></th>
             <th scope="col">Phone</th>
             <th scope="col">Email</th>
             <th scope="col">Gender</th>

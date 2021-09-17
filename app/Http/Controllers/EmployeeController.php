@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\contact_models;
 use Illuminate\Http\Request;
 
+
 class EmployeeController extends Controller
 {
     public function home(){
@@ -12,6 +13,12 @@ class EmployeeController extends Controller
         $contacts = contact_models::orderBy('name')->simplePaginate(9);
         return view('home', compact('contacts'));
     }
+
+    public function sort($fieldName){
+        $contacts = contact_models::orderBy($fieldName, 'desc')->simplePaginate(9);
+        return view('home', compact('contacts'));
+    }
+
 
     public function send(Request $request){
         $this->validate($request,[
@@ -65,6 +72,13 @@ class EmployeeController extends Controller
             ->simplePaginate(9);
 
         return view('home', compact('contacts'));
+    }
+
+    public function xml(){
+        $contacts = contact_models::all();
+
+
+        return response()->xml($contacts);
     }
 
 }

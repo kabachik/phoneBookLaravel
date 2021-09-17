@@ -23,4 +23,7 @@ Route::delete('/delete/{id}', 'EmployeeController@delete');
 
 Route::post('/edit/{id}', 'EmployeeController@edit');
 
+//Route::get('/xml', 'EmployeeController@xml')->name();
+
+Route::get('/sortBy/{fieldName}', 'EmployeeController@sort')->name('sortBy');
 
