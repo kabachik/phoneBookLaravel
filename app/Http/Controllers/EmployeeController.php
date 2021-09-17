@@ -9,7 +9,7 @@ class EmployeeController extends Controller
 {
     public function home(){
 //        $contacts = contact_models::all();
-        $contacts = contact_models::orderBy('name')->simplePaginate(10);
+        $contacts = contact_models::orderBy('name')->simplePaginate(9);
         return view('home', compact('contacts'));
     }
 
@@ -62,7 +62,7 @@ class EmployeeController extends Controller
         $contacts = contact_models::where('name', 'LIKE', "%{$query}%")
             ->orWhere('surname', 'LIKE', "%{$query}%")
             ->orWhere('phone', 'LIKE', "%{$query}%")
-            ->simplePaginate(10);
+            ->simplePaginate(9);
 
         return view('home', compact('contacts'));
     }

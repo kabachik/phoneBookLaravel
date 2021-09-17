@@ -41,7 +41,7 @@ modal.addEventListener("shown.bs.modal",function (){
 })
 
 
-// const modal2 = document.getElementById("editModal")
+// const modal2 = document.querySelector(".edit-modal")
 // modal2.addEventListener("shown.bs.modal",function (){
 //     const formSubmit = document.getElementById("edit-form-submit")
 //     formSubmit.addEventListener("click",function (e){
