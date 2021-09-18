@@ -44,6 +44,7 @@ class ContactsController extends Controller
 
     public function edit($id, Request $request){
         $contact = contact_models::find($id);
+
         $contact->name = $request->input('name');
         $contact->surname = $request->input('surname');
         $contact->phone = $request->input('phone');
@@ -68,12 +69,14 @@ class ContactsController extends Controller
             return redirect()->route('home');
         }
 
+        $categories = Categories::get();
+
         $contacts = contact_models::where('name', 'LIKE', "%{$query}%")
             ->orWhere('surname', 'LIKE', "%{$query}%")
             ->orWhere('phone', 'LIKE', "%{$query}%")
             ->simplePaginate(9);
 
-        return view('home', compact('contacts'));
+        return view('home', compact('contacts', 'categories'));
     }
 
     public function category(Request $request){
