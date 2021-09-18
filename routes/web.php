@@ -29,3 +29,5 @@ Route::get('/sortBy/{fieldName}', 'ContactsController@sort')->name('sortBy');
 
 Route::get('/category', 'ContactsController@category')->name('showCategory');
 
+Route::get('/exportXML', 'ContactsController@export')->name('export');
+

@@ -6,12 +6,16 @@ use App\Models\Categories;
 use App\Models\contact_models;
 use App\Models\Phones;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Storage;
+use SimpleXMLElement;
+use DOMDocument;
 
 
 class ContactsController extends Controller
 {
     public function home(){
-        $contacts = contact_models::orderBy('name')->simplePaginate(9)->withQueryString();
+        $contacts = contact_models::orderBy('name')->simplePaginate(9);
         $categories = Categories::get();
         return view('home', compact('contacts','categories'));
     }
@@ -94,11 +98,19 @@ class ContactsController extends Controller
         return view('home', compact('contacts','categories'));
     }
 
-//    public function xml(){
-//        $contacts = contact_models::all();
-//
-//
-//        return response()->xml($contacts);
-//    }
+    public function export(){
+        $contacts = contact_models::select('id','name','surname','phone','email','category_id')
+            ->orderBy('name')
+            ->get();
+
+
+        $xml = new SimpleXMLElement('<root/>');
+        array_walk_recursive($contacts, array ($xml, 'addChild'));
+        $xml = $xml->asXML();
+        Storage::disk('public')->put('export.xml',$xml);
+
+        return Response::download('storage/export.xml');
+    }
+
 
 }

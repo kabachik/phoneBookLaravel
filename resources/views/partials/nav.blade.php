@@ -12,8 +12,7 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle pointer" id="dropdown0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">File</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown08">
-                    <a class="dropdown-item pointer" href="#">Import phone book</a>
-                    <a class="dropdown-item pointer" href="#">Export phone book</a>
+                    <a class="dropdown-item pointer" href="{{route('export')}}">Export phone book</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
