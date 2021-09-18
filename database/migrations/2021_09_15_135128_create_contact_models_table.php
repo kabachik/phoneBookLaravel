@@ -17,9 +17,10 @@ class CreateContactModelsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('surname');
-            $table->string('gender');
             $table->string('phone');
             $table->string('email');
+            $table->integer('category');
+            $table->timestamps();
 
         });
     }
@@ -31,6 +32,6 @@ class CreateContactModelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contact_models');
+        Schema::dropIfExists('contacts');
     }
 }

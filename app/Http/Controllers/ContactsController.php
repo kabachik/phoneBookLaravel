@@ -3,14 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\contact_models;
+use App\Models\Phones;
 use Illuminate\Http\Request;
 
 
-class EmployeeController extends Controller
+class ContactsController extends Controller
 {
     public function home(){
-//        $contacts = contact_models::all();
-        $contacts = contact_models::orderBy('name')->simplePaginate(9);
+        $contacts = contact_models::orderBy('name')->simplePaginate(9)->withQueryString();
+//        $phones = Phone::all()->phone;
         return view('home', compact('contacts'));
     }
 
@@ -26,14 +27,13 @@ class EmployeeController extends Controller
             'surname' => 'required',
             'phone' => 'required',
             'email' => 'required',
-            'gender' => 'required',
         ]);
         $contact = new contact_models();
         $contact->name = $request->input('name');
         $contact->surname = $request->input('surname');
         $contact->phone = $request->input('phone');
         $contact->email = $request->input('email');
-        $contact->gender = $request->input('gender');
+        $contact->category = $request->input('category');
 
         $contact->save();
 
@@ -46,7 +46,7 @@ class EmployeeController extends Controller
         $contact->surname = $request->input('surname');
         $contact->phone = $request->input('phone');
         $contact->email = $request->input('email');
-        $contact->gender = $request->input('gender');
+        $contact->category = $request->input('category');
 
         $contact->save();
 
@@ -74,11 +74,23 @@ class EmployeeController extends Controller
         return view('home', compact('contacts'));
     }
 
-    public function xml(){
-        $contacts = contact_models::all();
+    public function category(Request $request){
+        $contacts = contact_models::where('category', $request->orderBy)->get();
 
+        if($request->ajax()){
+            return view('ajax.category', [
+               'contacts' => $contacts
+            ])->render();
+        }
 
-        return response()->xml($contacts);
+        return view('home', compact('contacts'));
     }
+
+//    public function xml(){
+//        $contacts = contact_models::all();
+//
+//
+//        return response()->xml($contacts);
+//    }
 
 }

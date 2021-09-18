@@ -8,5 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class contact_models extends Model
 {
     use HasFactory;
-    public $timestamps = false;
+//    public function phones(){
+//        return $this->hasMany(Phones::class);
+//    }
+
 }

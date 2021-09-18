@@ -31,14 +31,15 @@ modal.addEventListener("shown.bs.modal",function (){
             document.getElementById("email-warn").classList.add("d-none")
         }
 
-        if(document.getElementById("add-gender").value == ""){
-            e.preventDefault()
-            document.getElementById("gender-warn").classList.remove("d-none")
-        }else{
-            document.getElementById("gender-warn").classList.add("d-none")
-        }
+        // if(document.getElementById("add-gender").value == ""){
+        //     e.preventDefault()
+        //     document.getElementById("gender-warn").classList.remove("d-none")
+        // }else{
+        //     document.getElementById("gender-warn").classList.add("d-none")
+        // }
     })
 })
+
 
 
 // const modal2 = document.querySelector(".edit-modal")
@@ -61,3 +62,4 @@ $('.delete-user').click(function(e){
         $(e.target).closest('form').submit() // Post the surrounding form
     }
 });
+

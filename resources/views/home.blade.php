@@ -10,7 +10,6 @@
     @endif
 
 
-
 <div class="table-responsive">
     <table class="table table-striped table-sm">
         <thead>
@@ -21,7 +20,7 @@
             <th scope="col"><a href="{{route('sortBy','surname')}}">Surame</a></th>
             <th scope="col">Phone</th>
             <th scope="col">Email</th>
-            <th scope="col">Gender</th>
+            <th scope="col">Category</th>
             <th scope="col">Action</th>
         </tr>
         </thead>
@@ -33,7 +32,7 @@
             <td>{{$el->surname}}</td>
             <td>{{$el->phone}}</td>
             <td>{{$el->email}}</td>
-            <td>{{$el->gender}}</td>
+            <td>{{$el->category}}</td>
             <td>
                 <div class="btn-group">
                         <div class="form-group">

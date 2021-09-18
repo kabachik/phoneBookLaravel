@@ -25,10 +25,13 @@
                         <input required type="email" id="edit-email" class="form-control" name="email" placeholder="Email" value="{{$el->email}}">
                         <label for="Email">Email</label>
                     </div><br>
-                    <div class="form-floating">
-                        <input required type="text" id="edit-gender" class="form-control" name="gender" placeholder="Male/Female" value="{{$el->gender}}">
-                        <label for="Gender">Gender</label>
-                    </div>
+                    <select name="category" class="form-select form-select-lg" aria-label="Default select example">
+                        <option {{$el->category == 1 ? 'selected':""}} value="1">Category 1</option>
+                        <option {{$el->category == 2 ? 'selected':""}} value="2">Category 2</option>
+                        <option {{$el->category == 3 ? 'selected':""}} value="3">Category 3</option>
+                        <option {{$el->category == 4 ? 'selected':""}} value="4">Category 4</option>
+                        <option {{$el->category == 5 ? 'selected':""}} value="5">Category 5</option>
+                    </select>
 
                 </div>
                 <div class="modal-footer">

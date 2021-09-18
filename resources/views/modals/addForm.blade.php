@@ -28,11 +28,14 @@
                         <small id="email-warn" class="d-none text-danger">Field is empty</small>
                         <label for="Email">Email</label>
                     </div><br>
-                    <div class="form-floating">
-                        <input type="text" id="add-gender" class="form-control" name="gender" placeholder="Male/Female">
-                        <small id="gender-warn" class="d-none text-danger">Field is empty</small>
-                        <label for="Gender">Gender</label>
-                    </div>
+                    <select name="category" class="form-select form-select-lg" aria-label="Default select example">
+                        <option selected>Category</option>
+                        <option value="1">Category 1</option>
+                        <option value="2">Category 2</option>
+                        <option value="3">Category 3</option>
+                        <option value="4">Category 4</option>
+                        <option value="5">Category 5</option>
+                    </select>
 
                 </div>
                 <div class="modal-footer">

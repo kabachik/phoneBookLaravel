@@ -22,6 +22,16 @@
                     <a class="dropdown-item pointer" data-bs-toggle="modal" data-bs-target="#addModal">Add</a>
                 </div>
             </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle pointer" id="categories" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown08">
+                    <a class="dropdown-item pointer category-sorting" href="#" data-order="1">Category 1</a>
+                    <a class="dropdown-item pointer category-sorting" href="#" data-order="2">Category 2</a>
+                    <a class="dropdown-item pointer category-sorting" href="#" data-order="3">Category 3</a>
+                    <a class="dropdown-item pointer category-sorting" href="#" data-order="4">Category 4</a>
+                    <a class="dropdown-item pointer category-sorting" href="#" data-order="5">Category 5</a>
+                </div>
+            </li>
             <form method="GET" action="/search" class="form-inline">
                 <div class="input-group mb-0">
                     <input type="search" id="s" name="s" class="form-control" placeholder="Search row" aria-label="Search" aria-describedby="basic-addon2">
@@ -33,3 +43,5 @@
         </ul>
     </div>
 </nav>
+
+

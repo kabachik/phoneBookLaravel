@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\ContactsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,17 +13,19 @@ use App\Http\Controllers\EmployeeController;
 |
 */
 
-Route::get('/', 'EmployeeController@home')->name('home');
+Route::get('/', 'ContactsController@home')->name('home');
 
-Route::get('/search', 'EmployeeController@search')->name('search');
+Route::get('/search', 'ContactsController@search')->name('search');
 
-Route::post('/send', 'EmployeeController@send');
+Route::post('/send', 'ContactsController@send');
 
-Route::delete('/delete/{id}', 'EmployeeController@delete');
+Route::delete('/delete/{id}', 'ContactsController@delete');
 
-Route::post('/edit/{id}', 'EmployeeController@edit');
+Route::post('/edit/{id}', 'ContactsController@edit');
 
-//Route::get('/xml', 'EmployeeController@xml')->name();
+//Route::get('/xml', 'ContactsController@xml')->name();
 
-Route::get('/sortBy/{fieldName}', 'EmployeeController@sort')->name('sortBy');
+Route::get('/sortBy/{fieldName}', 'ContactsController@sort')->name('sortBy');
+
+Route::get('/category', 'ContactsController@category')->name('showCategory');
 
