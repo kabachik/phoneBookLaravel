@@ -13,13 +13,14 @@ class ContactsController extends Controller
     public function home(){
         $contacts = contact_models::orderBy('name')->simplePaginate(9)->withQueryString();
         $categories = Categories::get();
-//        $phones = Phone::all()->phone;
         return view('home', compact('contacts','categories'));
     }
 
     public function sort($fieldName){
         $contacts = contact_models::orderBy($fieldName, 'desc')->simplePaginate(9);
-        return view('home', compact('contacts'));
+        $categories = Categories::get();
+
+        return view('home', compact('contacts','categories'));
     }
 
 
