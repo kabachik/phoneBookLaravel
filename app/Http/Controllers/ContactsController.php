@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categories;
 use App\Models\contact_models;
 use App\Models\Phones;
 use Illuminate\Http\Request;
@@ -11,8 +12,9 @@ class ContactsController extends Controller
 {
     public function home(){
         $contacts = contact_models::orderBy('name')->simplePaginate(9)->withQueryString();
+        $categories = Categories::get();
 //        $phones = Phone::all()->phone;
-        return view('home', compact('contacts'));
+        return view('home', compact('contacts','categories'));
     }
 
     public function sort($fieldName){
@@ -33,7 +35,7 @@ class ContactsController extends Controller
         $contact->surname = $request->input('surname');
         $contact->phone = $request->input('phone');
         $contact->email = $request->input('email');
-        $contact->category = $request->input('category');
+        $contact->category_id = $request->input('category');
 
         $contact->save();
 
@@ -46,7 +48,7 @@ class ContactsController extends Controller
         $contact->surname = $request->input('surname');
         $contact->phone = $request->input('phone');
         $contact->email = $request->input('email');
-        $contact->category = $request->input('category');
+        $contact->category_id = $request->input('category');
 
         $contact->save();
 
@@ -75,15 +77,17 @@ class ContactsController extends Controller
     }
 
     public function category(Request $request){
-        $contacts = contact_models::where('category', $request->orderBy)->get();
+        $contacts = contact_models::where('category_id', $request->orderBy)->get();
+        $categories = Categories::get();
 
         if($request->ajax()){
             return view('ajax.category', [
-               'contacts' => $contacts
+                'contacts' => $contacts,
+                'categories' => $categories
             ])->render();
         }
 
-        return view('home', compact('contacts'));
+        return view('home', compact('contacts','categories'));
     }
 
 //    public function xml(){

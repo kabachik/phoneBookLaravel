@@ -19,7 +19,7 @@ class CreateContactModelsTable extends Migration
             $table->string('surname');
             $table->string('phone');
             $table->string('email');
-            $table->integer('category');
+            $table->integer('category_id');
             $table->timestamps();
 
         });

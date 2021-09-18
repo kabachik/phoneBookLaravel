@@ -20,7 +20,7 @@
                 <td>{{$el->surname}}</td>
                 <td>{{$el->phone}}</td>
                 <td>{{$el->email}}</td>
-                <td>{{$el->category}}</td>
+                <td>{{$el->category->c_name}}</td>
                 <td>
                     <div class="btn-group">
                         <div class="form-group">

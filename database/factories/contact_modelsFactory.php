@@ -26,7 +26,7 @@ class contact_modelsFactory extends Factory
             'surname' => $this->faker->lastName,
             'phone' => $this->faker->phoneNumber,
             'email' => $this->faker->email,
-            'category' => $this->faker->numberBetween(1,5),
+            'category_id' => $this->faker->numberBetween(1,4)
 
         ];
     }

@@ -26,11 +26,9 @@
                         <label for="Email">Email</label>
                     </div><br>
                     <select name="category" class="form-select form-select-lg" aria-label="Default select example">
-                        <option {{$el->category == 1 ? 'selected':""}} value="1">Category 1</option>
-                        <option {{$el->category == 2 ? 'selected':""}} value="2">Category 2</option>
-                        <option {{$el->category == 3 ? 'selected':""}} value="3">Category 3</option>
-                        <option {{$el->category == 4 ? 'selected':""}} value="4">Category 4</option>
-                        <option {{$el->category == 5 ? 'selected':""}} value="5">Category 5</option>
+                        @foreach($categories as $category)
+                            <option {{$el->category_id == $category->id ? 'selected':""}} value="{{$category->id}}">{{$category->c_name}}</option>
+                        @endforeach
                     </select>
 
                 </div>
